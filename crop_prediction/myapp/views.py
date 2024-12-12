@@ -4,7 +4,7 @@ import requests
 # Create your views here.
 
 def Index(request):
-    data = "Here You Can See Prediction"
+    data = 0
     if request.method == "POST":
         N = request.POST.get('N')
         P = request.POST.get('P')

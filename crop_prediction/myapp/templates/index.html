@@ -14,6 +14,9 @@
             padding-bottom: 10px;
             background-color: wheat;
             color: blueviolet;
+            height: 100%;
+            border-radius: 20px;
+            /* display: none; */
         }
 
         .header{
@@ -23,6 +26,36 @@
             text-align: center;
             color:chocolate;
         }
+
+        .bg1{
+            background-color: aliceblue;
+        }
+        .form-margin{
+            margin: 0px 60px;
+            
+        }
+        .fm{
+            padding: 20px;
+            padding-bottom: 20px;
+        }
+        body{
+            background-color: whitesmoke;
+        }
+
+        .rel{
+            position: relative;
+        }
+        .abs{
+            position: absolute;
+            /* top: 20%; */
+            text-align: center;
+           width: 50%;
+           margin-left: 25%;
+           padding-bottom: 20px;
+           padding-top: 20px;
+           height: 100%;
+           
+        }
     </style>
 </head>
 <body>
@@ -30,29 +63,72 @@
         <h4>Crop Recommendation System</h4>
     </div>
     <div class="container">
-        <form action="" method="post">
-            {% csrf_token %}
-            Nitrogen(N):<input type="text" name="N" class="form-control" placeholder="Enter Nitrogen value" />
-            Phospherous(P): <input type="text" name="P" class="form-control" placeholder="Enter Phospherous value" />
-            Potassium(K): <input type="text" name="K" class="form-control" placeholder="Enter Pottasium value" />
-            Temperature(T) : <input type="text" name="T" class="form-control" placeholder="Enter Temperature value" />
-            Humidity(H) : <input type="text" name="H" class="form-control" placeholder="Enter Humidity value" />
-            PH : <input type="text" name="PH" class="form-control" placeholder="Enter PH value" />
-            RainFalls : <input type="text" name="R" class="form-control" placeholder="Enter Rainfalls value" />
-            <br>
-            <input type="submit" value="Predict" class="btn btn-success" />
-        </form>
+        <div class="mt-5 shadow bg1 rel">
 
-        <br><br>
-    
-        <div class="pre">
-            <h1>{{prediction}}</h1>
+
+            {% if prediction != 0  %}
+
+            <div class="abs " id="close">
+                
+                <div class="pre">
+                    <p style="text-align: right;" onclick="Close()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                          </svg>
+                    </p>
+
+                    <h1 style="padding-top: 25%;">{{prediction}}</h1>
+                    <h1 id="h1"></h1>
+                </div> 
+            
+            </div>
+
+            {% endif %}
+
+            <div class="form-margin">
+                <form action="" method="post" class="fm">
+                    {% csrf_token %}
+                    Nitrogen(N):<input type="text" name="N" class="form-control" placeholder="Enter Nitrogen value" />
+                    Phospherous(P): <input type="text" name="P" class="form-control" placeholder="Enter Phospherous value" />
+                    Potassium(K): <input type="text" name="K" class="form-control" placeholder="Enter Pottasium value" />
+                    Temperature(T) : <input type="text" name="T" class="form-control" placeholder="Enter Temperature value" />
+                    Humidity(H) : <input type="text" name="H" class="form-control" placeholder="Enter Humidity value" />
+                    PH : <input type="text" name="PH" class="form-control" placeholder="Enter PH value" />
+                    RainFalls : <input type="text" name="R" class="form-control" placeholder="Enter Rainfalls value" />
+                    <br>
+                    <input type="submit" value="Predict" class="btn btn-success" />
+                </form>
+        
+            </div>
+           
         </div>
 
         
-
         
+        <br><br>
+    
+        
+
+
     </div>
+
+    <script>
+        function Close(){
+            document.getElementById('close').style.display = "none"
+        }
+        
+        // if("{{prediction}}" != 0){
+        //     document.getElementById('close').style.display = "none"
+            
+            
+        // }
+        
+
+    
+    </script>
+
+    
     
 </body>
 </html>
