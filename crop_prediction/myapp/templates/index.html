@@ -12,7 +12,7 @@
             text-align: center;
             padding-top: 10px;
             padding-bottom: 10px;
-            background-color: wheat;
+            background-color: rgba(0, 0, 0, 0.3);
             color: blueviolet;
             height: 100%;
             border-radius: 20px;
@@ -55,7 +55,24 @@
            padding-top: 20px;
            height: 100%;
            
+           
         }
+        
+        .fire{
+
+            animation-name: abs;
+        }
+         
+        @keyframes abs {
+
+        }
+
+        .box{
+            background-color: cadetblue;
+            height: 0px;
+        }
+
+
     </style>
 </head>
 <body onclick="Close()">
@@ -67,6 +84,18 @@
 
 
             {% if prediction != 0  %}
+            
+            <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+
+            <script>
+                const jsConfetti = new JSConfetti()
+
+                 jsConfetti.addConfetti()
+
+                                jsConfetti.addConfetti({
+                    emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸','🎉','🌱','🌻','🌼','🌷','🌳','🌴','🌾','🌿','🍀','🌲'],
+                })
+            </script>
 
             <div class="abs " id="close">
                 
@@ -77,12 +106,17 @@
                             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
                           </svg>
                     </p>
-
-                    <h1 style="padding-top: 25%;">{{prediction}}</h1>
-                    <h1 id="h1"></h1>
+                    
+                    <div >
+                        <h1 style="padding-top: 25%;">{{prediction}}</h1>
+                    </div>
+                    
+                   
                 </div> 
             
             </div>
+        
+
 
             {% endif %}
 
@@ -112,8 +146,12 @@
 
 
     </div>
+    
 
     <script>
+
+        
+
         function Close(){
             document.getElementById('close').style.display = "none"
         }
